@@ -1,0 +1,35 @@
+<h1 mat-dialog--title>{{ data }}</h1>
+
+<div mat-dialog-content>
+  <form class="example-form" (ngSubmit)="onSubmit()">
+
+    <!-- /Post_Title/ -->
+    <mat-form-field>
+      <input matInput placeholder="Post Title" type="text" required [(ngModel)]="blogPost.title" name="title">
+    </mat-form-field>
+    <!-- /Post_Title/ -->
+
+    <!-- /Post_Body/ -->
+    <mat-form-field>
+      <textarea matInput placeholder="Post Body" required [(ngModel)]="blogPost.body" name="body"></textarea>
+    </mat-form-field>
+    <!-- /Post_Body/ -->
+
+    <!-- /Post_Category/ -->
+    <mat-form-field>
+      <mat-select matInput placeholder="Post Category" required [(ngModel)]="blogPost.category" name="category">
+        <mat-option *ngFor="let category of Categories" [value]="category.value">
+          {{ category.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- /Post_Category/ -->
+
+    <button mat-raised-button type="submit" color="primary">Save</button>
+
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button class="close" (click)="onCancel()" color="warn">Cancel</button>
+</div>

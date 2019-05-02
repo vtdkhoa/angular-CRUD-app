@@ -1,0 +1,123 @@
+<mat-sidenav-container>
+
+  <!-- /Layout mobile platform/ -->
+  <!-- /Header/ -->
+  <mat-sidenav #sidenav role="navigation">
+    <mat-nav-list>
+
+      <!-- /Login/ -->
+      <a mat-list-item  *ngIf="!authService.isAuthenticated()" (click)="authService.login()">
+        <mat-icon class="icon">input</mat-icon>
+        <span class="label">Login</span>
+      </a>
+      <!-- /Login/ !-->
+
+      <!-- /Home/ -->
+      <a mat-list-item *ngIf="authService.isAuthenticated()" [routerLink]="['/']">
+        <mat-icon class="icon">home</mat-icon>
+        <span class="label">Home</span>
+      </a>
+      <!-- /Home/ -->
+
+      <!-- /Dashboard/ -->
+      <a mat-list-item [routerLink]="['/dashboard']">
+        <mat-icon class="icon">dashboard</mat-icon>
+        <span class="label">Dashboard</span>
+      </a>
+      <!-- /Dashboard/ -->
+
+      <!-- /About/ -->
+      <a mat-list-item [routerLink]="['/about']">
+        <mat-icon class="icon">info</mat-icon>
+        <span class="label">About</span>
+      </a>
+      <!-- /About/ -->
+
+      <!-- /Logout/ -->
+      <a *ngIf="authService.isAuthenticated()" (click)="authService.logout()" mat-list-item type="button">
+        <mat-icon class="icon">input</mat-icon>
+        <span class="label">Logout</span>
+      </a>
+      <!-- /Logout/ -->
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <!-- /Header/ -->
+  <!-- /Layout mobile platform/ -->
+
+  <!-- /Web layout platform/ -->
+  <!-- /Header/ -->
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+
+      <!-- /Toggle button menu on mobile platform/ -->
+      <div fxHide.gt-xs>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <!-- /Toggle button menu on mobile platform/ -->
+
+      <!-- /Title/ -->
+      <div>
+        <a [routerLink]="['/']">Material Blog</a>
+      </div>
+      <!-- /Title/ -->
+
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+
+          <!-- /Login/ -->
+          <li>
+            <a *ngIf="!authService.isAuthenticated()" (click)="authService.login()">
+              <mat-icon class="icon" style="margin-right: 7px;">input</mat-icon>
+              <span class="label">Login</span>
+            </a>
+          </li>
+          <!-- /Login/ -->
+
+          <!-- /Home/ -->
+          <li>
+            <a *ngIf="authService.isAuthenticated()" [routerLink]="['/']">
+              <mat-icon class="icon" style="margin-right: 7px;">home</mat-icon>
+              <span class="label">Home</span>
+            </a>
+          </li>
+          <!-- /Home/ -->
+
+          <!-- /Dashboard/ -->
+          <li>
+            <a [routerLink]="['/dashboard']">
+              <mat-icon class="icon">dashboard</mat-icon>
+              <span class="label">Dashboard</span>
+            </a>
+          </li>
+          <!-- /Dashboard/ -->
+
+          <!-- /About/ -->
+          <li>
+            <a [routerLink]="['/about']">
+              <mat-icon class="icon" style="margin-right: 7px;">info</mat-icon>
+              <span class="label">About</span>
+            </a>
+          </li>
+          <!-- /About/ -->
+
+          <!-- /Logout/ -->
+          <li>
+            <a *ngIf="authService.isAuthenticated()" (click)="authService.logout()" type="button">
+              <mat-icon class="icon" style="margin-right: 7px;">input</mat-icon>
+              <span class="label">Logout</span>
+            </a>
+          </li>
+          <!-- /Logout/ -->
+
+        </ul>
+      </div>
+
+    </mat-toolbar>
+  </mat-sidenav-content>
+  <!-- /Header/ -->
+  <!-- /Web layout platform/ -->
+
+</mat-sidenav-container>
